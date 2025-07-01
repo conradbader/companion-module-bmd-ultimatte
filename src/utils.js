@@ -78,16 +78,27 @@ module.exports = {
 			if (key == 'CONTROL') {	
 				console.log('CONTROL')
 				console.log(data)
-				for (let i = 0; i < self.controls_rotary.length; i++) {
-					let control = self.controls_rotary[i];
-					let controlId = control.id;
-					let controlName = control.label;
-					let controlValue = data[controlName];
-	
-					if (controlValue !== undefined) {
-						self.data[controlId] = parseInt(controlValue);
-					}
-				}
+                                for (let i = 0; i < self.controls_rotary.length; i++) {
+                                        let control = self.controls_rotary[i];
+                                        let controlId = control.id;
+                                        let controlName = control.label;
+                                        let controlValue = data[controlName];
+
+                                        if (controlValue !== undefined) {
+                                                self.data[controlId] = parseInt(controlValue);
+                                        }
+                                }
+
+                                for (let i = 0; i < self.controls_text.length; i++) {
+                                        let control = self.controls_text[i];
+                                        let controlId = control.id;
+                                        let controlName = control.label;
+                                        let controlValue = data[controlName];
+
+                                        if (controlValue !== undefined) {
+                                                self.data[controlId] = controlValue;
+                                        }
+                                }
 			}
 		
 			self.checkFeedbacks();
