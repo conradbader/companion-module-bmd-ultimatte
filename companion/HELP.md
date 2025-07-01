@@ -76,3 +76,25 @@ Enable Sample Wall.
 Enable Sample Floor.
 ### Auto Screen Sample
 Enable Auto Screen Sample.
+### Screen Correct
+Turn Screen Correct On or Off.
+### Noise Enable
+Turn noise reduction On or Off.
+### Noise Cursor Enable
+Turn the noise cursor On or Off.
+### FG Freeze
+Freeze the foreground input.
+### BG Freeze
+Freeze the background input.
+### Ambiance Enable
+Turn Ambiance On or Off.
+### Lighting Enable
+Turn Lighting On or Off.
+### Window Enable
+Enable or disable the garbage matte window.
+### Window Invert
+Invert the garbage matte window.
+### Set Control Value
+Select a control and set it to a specific numeric value.
+### Offset Controls
+Increment or decrement a control by a specified amount.
