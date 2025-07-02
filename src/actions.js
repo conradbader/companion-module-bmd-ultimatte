@@ -500,14 +500,217 @@ module.exports = {
 			}
 		};
 		
-		actions.auto_scn_sample = {
-			name: 'Auto Screen Sample',
-			options: [],
-			callback: async function (action, bank) {
-				let cmd = self.makeControlCommand(self.Controls.AUTO_SCN_SAMP, 'Yes');
-				self.sendCommand(cmd);
-			}
-		};
+               actions.auto_scn_sample = {
+                       name: 'Auto Screen Sample',
+                       options: [],
+                       callback: async function (action, bank) {
+                               let cmd = self.makeControlCommand(self.Controls.AUTO_SCN_SAMP, 'Yes');
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.screen_correct = {
+                       name: 'Screen Correct',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.SCREEN_CORRECT, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.noise_enable = {
+                       name: 'Noise Enable',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.NOISE_ENABLE, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.noise_cur_enable = {
+                       name: 'Noise Cursor Enable',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.NOISE_CUR_ENABLE, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.fg_freeze = {
+                       name: 'FG Freeze',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.FG_FREEZE, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.bg_freeze = {
+                       name: 'BG Freeze',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.BG_FREEZE, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.ambiance_enable = {
+                       name: 'Ambiance Enable',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.AMBIANCE_ENABLE, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.lighting_enable = {
+                       name: 'Lighting Enable',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.LIGHTING_ENABLE, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.window_enable = {
+                       name: 'Window Enable',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.WINDOW_ENABLE, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.window_invert = {
+                       name: 'Window Invert',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'On/Off',
+                                       id: 'controlValue',
+                                       default: 'On',
+                                       choices: onoffdrop,
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let cmd = self.makeControlCommand(self.Controls.WINDOW_INVERT, opt.controlValue);
+                               self.sendCommand(cmd);
+                       }
+               };
+
+               actions.set_control_value = {
+                       name: 'Set Control Value',
+                       options: [
+                               {
+                                       type: 'dropdown',
+                                       label: 'Control',
+                                       id: 'controlSel',
+                                       default: self.controls_rotary[0].id,
+                                       choices: self.controls_rotary,
+                               },
+                               {
+                                       type: 'textinput',
+                                       label: 'Value',
+                                       id: 'value',
+                                       default: '0',
+                                       useVariables: true
+                               },
+                       ],
+                       callback: async function (action, bank) {
+                               let opt = action.options;
+                               let control = self.controls_rotary.find((control) => control.id === opt.controlSel);
+                               if (control) {
+                                       let value = await self.parseVariablesInString(opt.value);
+                                       value = parseInt(value);
+                                       if (isNaN(value)) {
+                                               value = 0;
+                                       }
+
+                                       if (value < control.min) {
+                                               value = control.min;
+                                       }
+                                       if (value > control.max) {
+                                               value = control.max;
+                                       }
+
+                                       let cmd = self.makeControlCommand(control.label, value);
+                                       self.sendCommand(cmd);
+                               }
+                       }
+               };
 
 		//Rotary Actions
 		actions.offset_controls = {
